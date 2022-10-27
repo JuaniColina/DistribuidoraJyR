@@ -33,6 +33,7 @@ const ItemListContainer = ({greeting}) => {
     }
     }, [categoryId])
 
+    
     if (loading) {
         return <h1>Loading...</h1>
     }

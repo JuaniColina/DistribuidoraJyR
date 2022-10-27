@@ -6,18 +6,22 @@ import ItemListContainer from './components/ItemListContainer/itemListContainer'
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 import { BrowserRouter, Routes, Route, Link } from 'react-router-dom' 
 import { useState } from 'react';
+import Animation from './components/Animation/Animation';
 function App() {
 
   return (
     <div className="App">
+    
       <BrowserRouter>
-        <Navbar />
+        <Navbar /> 
         <Routes>
          <Route path='/' element ={<ItemListContainer greeting={'Bienvenidos a distribuidora JyR'} />}/>
          <Route path='/category/:categoryId' element={<ItemListContainer />}/>
          <Route path='/detail/:productid' element={<ItemDetailContainer />}/>
+         <Route path='*' element={<h1>404 NOT FOUND</h1>} />
         </Routes>
-      </BrowserRouter>
+  </BrowserRouter> 
+
         
     </div>
   );
