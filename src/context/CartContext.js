@@ -35,7 +35,6 @@ const CartProvider = ({ children }) => {
         addToCart,
         deleteItem,
         clearCart
-
      }
 
     return (
