@@ -1,8 +1,9 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { getProducts } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { getProductsByCategory } from "../../asyncMock"
+import { CartContext } from "../../context/CartContext"
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
@@ -10,6 +11,7 @@ const ItemListContainer = ({greeting}) => {
     const [ loading, setLoading] = useState(true)
 
     const { categoryId } = useParams()
+
 
     useEffect(() => {
     if(!categoryId) {
@@ -34,8 +36,10 @@ const ItemListContainer = ({greeting}) => {
     }, [categoryId])
 
     
+
+    
     if (loading) {
-        return <h1>Loading...</h1>
+        return <h1>Cargando...</h1>
     }
 
     if (error) {

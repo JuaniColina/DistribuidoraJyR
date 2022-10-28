@@ -4,7 +4,7 @@ const products = [
         name: 'Capsula dolce gusto capuccino',
         price: '310',
         category: 'Cafe',
-        img: 'https://shop.nestle.com.uy/collections/capsulas-dolce-gusto/products/dolcegusto-cappuccino#images',
+        img: 'https://cdn.shopify.com/s/files/1/0574/7585/8640/products/NDG_Cappu_2400x.jpg?v=1655744971',
         stock: 30,
         description: 'Descripcion cafe'
      },
@@ -13,7 +13,7 @@ const products = [
         name: 'Fernet Branca',
         price: '449',
         category: 'Alcohol',
-        img: 'https://www.distribuidorabebidas.com.uy/producto/licor-fernet-branca-700-cc/',
+        img: 'https://www.distribuidorabebidas.com.uy/wp-content/uploads/sites/31/2018/01/fern-branca-1-510x510.jpg',
         stock: 30,
         description: 'Descripcion Fernet'
      },
@@ -22,15 +22,15 @@ const products = [
         name: 'Balde pico dulce',
         price: '310',
         category: 'Golosinas',
-        img: 'https://www.elgoloso.com.uy/catalogo/golosinas/caramelos-chicles-y-chupetines/chupetines-pico-dulce-chup114/',
+        img: 'https://cotillonfullexpress.com/images/contenidos/20200901215119_CHUPETIN%20PICO%20DULCE.jpg',
         stock: 30,
         description: 'Descripcion Pico Dulce'
      }
 ]
 
 export const getProducts = () => {
-    return new Promise (() => {
-        setTimeout((resolve, reject) => {
+    return new Promise ((resolve) => {
+        setTimeout(() => {
             resolve(products)
         }, 1500)
     })

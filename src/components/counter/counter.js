@@ -1,26 +1,26 @@
 import { useState } from "react"
 
-const Counter = () => {
-    const initial = 0
-    let [count, setCount] = useState (initial)
-    
-    const decrement = () =>{
-        if(count > 0) {
-        setCount(count - 1)
-    }}
-    const increment = () =>{
-        setCount (count + 1)
-     }
-     const reset = () =>{
-        setCount (initial)
-     }
+const Counter = ({stock, initial, onAdd}) => {
+    const [count, setCount] = useState(initial)
+
+    const increment = () => {
+        if(count <= stock) {
+            setCount(count + 1)
+        }
+    }
+
+    const decrement = () => {
+        if(count > initial){
+            setCount(count - 1)
+        }
+    }
 
     return (
         <div>
-            <h1>{count}</h1>
-            <button onClick={decrement}>Restar</button>
-            <button onClick={increment}>Sumar</button>
-            <button onClick={reset}>Reset</button>
+            <p>{count}</p>
+            <button onclick={decrement}>-</button>
+            <button onClick={increment}>+</button>
+            <button variant='success' onclick={() => onAdd(count)}>Comprar</button>
         </div>
     )
 }

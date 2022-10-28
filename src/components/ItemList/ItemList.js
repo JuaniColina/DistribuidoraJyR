@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+import Item from '../Item/Item'
 
 const ItemList = ({ products }) => {
 
@@ -16,8 +17,8 @@ const ItemList = ({ products }) => {
     }
     return (
         <div>
-          <ul style={{display: 'flex', flexDirection: 'column'}} onClick={handleClick}>
-            {products.map(product => <Link to={`/detail/${product.id}`} key={product.id}>{product.name}</Link>)}
+          <ul style={{display: 'flex', justifyContent:'space-around', alignItems:'center', flexWrap:'wrap'}} onClick={handleClick}>
+            {products.map(product => <Link to={`/detail/${product.id}`} key={product.id}><Item product={product}/></Link>)}
           </ul>
         </div>
     )
