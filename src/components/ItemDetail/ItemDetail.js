@@ -1,5 +1,16 @@
+import { useContext, useState } from "react";
 import Counter from "../counter/counter"
-const ItemDetail = ({product, onAdd}) => {
+import { CartContext } from "../../context/CartContext"
+const ItemDetail = ({product}) => {
+    
+    const {addToCart} = useContext(CartContext);
+
+    const [added, setAdded] = useState(false)
+
+    function onAdd(count) {
+        addToCart(product, count);
+        setAdded(true);
+    }
     
     return (
         <article className="CardItem">
@@ -25,7 +36,9 @@ const ItemDetail = ({product, onAdd}) => {
             <Counter initial={1} stock={product?.stock} onAdd={onAdd}/>
             
         </article>
+        
     )
+    
 }
 
 export default ItemDetail
