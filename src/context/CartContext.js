@@ -7,6 +7,8 @@ const CartProvider = ({ children }) => {
 
      const [cartArray, setCartArray] = useState([]);
      const [totalCount, setTotalCount] = useState(0);
+     
+
      const addToCart = (product, count) => {
         if(isInCart(product.id)){
         }else {
@@ -16,7 +18,6 @@ const CartProvider = ({ children }) => {
             count
         }
         setCartArray([...cartArray, newObj])
-        productCount();
         }
      }
 
@@ -33,12 +34,8 @@ const CartProvider = ({ children }) => {
          return cartArray.some(element => element.item.id === id);
      }
 
-     const productCount = () => {
-      if (cartArray.length > 1) {
-         const value = cartArray.reduce((prevElement, currentElement) => prevElement.count + currentElement.count);
-      setTotalCount(value);
-      }
-     }
+     
+     
 
      console.log(totalCount);
 

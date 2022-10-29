@@ -1,4 +1,5 @@
 import React from "react";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
 const CartItem = ({product, deleteItem}) => {
