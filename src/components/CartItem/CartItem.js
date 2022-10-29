@@ -8,6 +8,9 @@ const CartItem = ({product, deleteItem}) => {
             <Container>
                 <Row>
                     <Col>
+                     <img src={product.item.img} style={{width:'10rem'}}  />
+                    </Col>
+                    <Col>
                      {product.item.title}
                     </Col>
                     <Col>

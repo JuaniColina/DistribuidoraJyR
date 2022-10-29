@@ -20,7 +20,7 @@ const Counter = ({stock, initial, onAdd}) => {
             <p>{count}</p>
             <button onclick={decrement}>-</button>
             <button onClick={increment}>+</button>
-            <button variant='success' onclick={() => onAdd(count)}>Comprar</button>
+            <button variant='success' onClick={() => onAdd(count)}>Agregar al carrito</button>
         </div>
     )
 }
