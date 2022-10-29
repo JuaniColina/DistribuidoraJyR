@@ -6,19 +6,22 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
 
      const [cartArray, setCartArray] = useState([]);
-
+     const [totalCount, setTotalCount] = useState(0);
      const addToCart = (product, count) => {
-        console.log(`agregaste ${product.title}, cantidad: ${count}.`);
+        if(isInCart(product.id)){
+        }else {
+            console.log(`agregaste ${product.title}, cantidad: ${count}.`);
         const newObj = {
             item: product,
             count
         }
         setCartArray([...cartArray, newObj])
-
+        productCount();
+        }
      }
 
      const deleteItem = (id) => {
-        const updatedCart = cartArray.filter(element => element.id !== id);
+        const updatedCart = cartArray.filter(element => element.item.id !== id);
         setCartArray(updatedCart);
      }
 
@@ -27,8 +30,17 @@ const CartProvider = ({ children }) => {
      }
 
      const isInCart = (id) => {
-         return cartArray.some(element => element.id === id);
+         return cartArray.some(element => element.item.id === id);
      }
+
+     const productCount = () => {
+      if (cartArray.length > 1) {
+         const value = cartArray.reduce((prevElement, currentElement) => prevElement.count + currentElement.count);
+      setTotalCount(value);
+      }
+     }
+
+     console.log(totalCount);
 
      const value = {
         cartArray,

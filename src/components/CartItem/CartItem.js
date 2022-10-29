@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 
-const CartItem = ({product, handleDelete}) => {
+const CartItem = ({product, deleteItem}) => {
     return (
         <Card body>
             <Container>
@@ -16,7 +16,7 @@ const CartItem = ({product, handleDelete}) => {
                      ${product.item.price}
                     </Col>
                     <Col>
-                     <Button variant='danger' onClick={handleDelete(product.item.id)}>Delete</Button>
+                     <Button variant='danger' onClick={() => deleteItem(product.item.id)}>Delete</Button>
                     </Col>
                 </Row>
             </Container>
