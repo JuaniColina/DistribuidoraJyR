@@ -3,7 +3,9 @@ import { getProducts } from "../../asyncMock"
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
 import { getProductsByCategory } from "../../asyncMock"
-import { CartContext } from "../../context/CartContext"
+import { getDocs, collection }  from 'firebase/firestore'
+import { db } from "../../service/firebase"
+
 
 const ItemListContainer = ({greeting}) => {
     const [products, setProducts] = useState([])
@@ -14,6 +16,21 @@ const ItemListContainer = ({greeting}) => {
 
 
     useEffect(() => {
+        
+        
+        const collectionref = collection(db, 'products')
+        
+        getDocs(collectionref).then(response => {
+             const productsAdapted = response.docs.map(doc => {
+                const data = doc.data ()
+                return { id: doc.id, ...data}
+             })
+
+             setProducts(productsAdapted)
+        }).finally(() => {
+            setLoading(false)
+        })
+
     if(!categoryId) {
         getProducts().then(res => {
             setProducts(res)
