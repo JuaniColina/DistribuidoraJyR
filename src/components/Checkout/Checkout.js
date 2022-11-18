@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
-
+import { addDoc, collection } from "firebase/firestore"
+import { db } from "../../service/firebase"
 const Checkout = () => { 
     const {cart, total} = useContext(CartContext)
  
@@ -14,6 +15,9 @@ const Checkout = () => {
             items: cart,
             total
         }
+        
+        const collectionRef = collection(db, 'orders')
+        addDoc(collectionRef, objOrder)
    }
     return (
         <>
