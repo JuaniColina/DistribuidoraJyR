@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import { addDoc, collection } from "firebase/firestore"
-import { db } from "../../service/firebase"
+import { db } from "../../service/firebase/index"
 const Checkout = () => { 
     const {cart, total} = useContext(CartContext)
  

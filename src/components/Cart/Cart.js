@@ -7,15 +7,15 @@ const CartContainer = () => {
 
     const { cartArray, deleteItem } = useContext(CartContext)
 
- //   if (cartArray.length === 0) {
- //       return (
- //           <div>
- //               <p>No hay productos aun</p>
- //               <Link to='/'>Ir al Inicio</Link>
- //           </div>
- //           
- //       )
- //   }
+  if (cartArray.length === 0) {
+        return (
+            <div>
+                <p>No hay productos aun</p>
+               <Link to='/'>Ir al Inicio</Link>
+            </div>
+            
+        )
+    }
 
     return (
         <div>

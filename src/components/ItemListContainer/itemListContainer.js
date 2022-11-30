@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from "react"
-import { getProducts } from "../../asyncMock"
+//import { getProducts } from "../../asyncMock"//
 import ItemList from "../ItemList/ItemList"
 import { useParams } from "react-router-dom"
-import { getProductsByCategory } from "../../asyncMock"
-import { getDocs, collection }  from 'firebase/firestore'
+import { getDocs, collection, query, where }  from 'firebase/firestore'
 import { db } from "../../service/firebase"
 
 
@@ -18,7 +17,11 @@ const ItemListContainer = ({greeting}) => {
     useEffect(() => {
         
         
-        const collectionref = collection(db, 'products')
+        const collectionref = categoryId 
+             ? query (collection(db, 'products'), where('category', '==', categoryId)) 
+             : collection(db, products)
+        
+        //collection(db, 'products')
         
         getDocs(collectionref).then(response => {
              const productsAdapted = response.docs.map(doc => {
@@ -27,30 +30,34 @@ const ItemListContainer = ({greeting}) => {
              })
 
              setProducts(productsAdapted)
-        }).finally(() => {
+        })
+         .catch(error => {
+
+         })
+        .finally(() => {
             setLoading(false)
         })
 
-    if(!categoryId) {
-        getProducts().then(res => {
-            setProducts(res)
-        }).catch(error => {
-            console.log(error)
-            setError(true)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }else {
-        getProductsByCategory(categoryId).then(res => {
-            setProducts(res)
-        }).catch(error => {
-            console.log(error)
-            setError(true)
-        }).finally(() => {
-            setLoading(false)
-        })
-    }
-    }, [categoryId])
+   // if(!categoryId) {
+     //   getProducts().then(res => {
+        //    setProducts(res)
+       // }).catch(error => {
+        //    console.log(error)
+       //     setError(true)
+       // }).finally(() => {
+       //     setLoading(false)
+      //  })
+    //}else {
+       // getProductsByCategory(categoryId).then(res => {
+      //      setProducts(res)
+       // }).catch(error => {
+         //   console.log(error)
+       //     setError(true)
+       // }).finally(() => {
+        //    setLoading(false)
+        //})
+   // }
+   }, [categoryId])
 
     
 
